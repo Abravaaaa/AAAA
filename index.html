@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprovante PIX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .success-bg {
+            background-color: #00b894;
+        }
+
+        /* Animação do Check */
+        .checkmark-circle {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            border-radius: 50%;
+            background: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .checkmark-kick {
+            position: absolute;
+            width: 15px;
+            height: 35px;
+            background-color: #00b894;
+            left: 24px;
+            top: 36px;
+            transform: rotate(-45deg);
+            border-radius: 2px;
+            animation: kick 0.3s ease-out forwards;
+        }
+
+        .checkmark-stem {
+            position: absolute;
+            width: 15px;
+            height: 55px;
+            background-color: #00b894;
+            left: 45px;
+            top: 14px;
+            transform: rotate(45deg);
+            border-radius: 2px;
+            animation: stem 0.3s ease-out forwards;
+        }
+
+        @keyframes kick {
+            0% { height: 0; opacity: 0; }
+            100% { height: 35px; opacity: 1; }
+        }
+
+        @keyframes stem {
+            0% { height: 0; opacity: 0; }
+            100% { height: 55px; opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <!-- Container do Smartphone Simulado -->
+    <div class="w-full max-w-md bg-white min-h-screen sm:min-h-0 sm:h-[700px] sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col relative">
+        
+        <!-- Barra de Status (Fictícia) -->
+        <div class="px-6 py-3 flex justify-between items-center bg-white text-gray-800 text-xs font-semibold">
+            <span>09:41</span>
+            <div class="flex gap-1.5 items-center">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21l-12-18h24z"/></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
+                <div class="w-5 h-2.5 border border-gray-400 rounded-sm relative">
+                    <div class="absolute inset-y-0.5 left-0.5 right-1 bg-gray-600"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <div class="flex-1 flex flex-col items-center justify-center px-8 text-center bg-white">
+            
+            <!-- Ícone de Sucesso -->
+            <div class="checkmark-circle shadow-lg">
+                <div class="checkmark-kick"></div>
+                <div class="checkmark-stem"></div>
+            </div>
+
+            <h1 class="text-2xl font-bold text-gray-800 mb-2 fade-in" style="animation-delay: 0.4s;">
+                Pix enviado!
+            </h1>
+            <p class="text-gray-500 text-sm mb-8 fade-in" style="animation-delay: 0.5s;">
+                A transferência foi concluída com sucesso e o valor já está disponível na conta do favorecido.
+            </p>
+
+            <!-- Cards de Detalhes -->
+            <div class="w-full space-y-3 fade-in" style="animation-delay: 0.6s;">
+                <div class="bg-gray-50 rounded-xl p-4 flex items-center justify-between">
+                    <span class="text-gray-400 text-xs uppercase tracking-wider font-semibold">Data e Hora</span>
+                    <span id="current-time" class="text-gray-700 text-sm font-medium">--/--/---- às --:--</span>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-4 flex items-center justify-between">
+                    <span class="text-gray-400 text-xs uppercase tracking-wider font-semibold">ID da Transação</span>
+                    <span class="text-gray-700 text-sm font-mono">E123456...890</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Ações Inferiores -->
+        <div class="p-6 space-y-3 bg-white fade-in" style="animation-delay: 0.7s;">
+            <button class="w-full py-4 bg-gray-900 text-white rounded-2xl font-bold text-sm active:scale-95 transition-transform">
+                Ver comprovante completo
+            </button>
+            <button onclick="location.reload()" class="w-full py-4 bg-transparent text-gray-500 border border-gray-200 rounded-2xl font-bold text-sm active:scale-95 transition-transform">
+                Nova transferência
+            </button>
+        </div>
+
+        <!-- Barra Inferior -->
+        <div class="h-1.5 w-32 bg-gray-200 rounded-full mx-auto mb-2"></div>
+    </div>
+
+    <script>
+        // Atualiza a data e hora para o momento atual do envio
+        window.onload = function() {
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('pt-BR');
+            const timeStr = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('current-time').innerText = `${dateStr} às ${timeStr}`;
+        };
+    </script>
+</body>
+</html>
